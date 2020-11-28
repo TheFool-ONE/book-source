@@ -1,0 +1,32 @@
+{
+    "name": "搜狗小说",
+    "url": "m.sgxs.cc",
+    "Version": 100,
+    "search":{
+        "url": "https://m.sgxs.cc/search/result.html?searchkey=${key}",
+        "charset": "utf-8",
+        "list": "div.host_sale",
+        "name": "p.title",
+        "author": "p.author",
+        "detail": "a"
+    },
+    "detail":{
+        "name": ".title",
+        "catalog": "a#AllChapterList2"
+    },
+    "catalog":{
+        "list": "div#chapterlist.directoryArea",
+        "orderBy": 0,
+        "booklet":{
+            "name": ".directoryArea@match->(?<=])(.+)(?=共[0-9]+章)",
+            "list": "p"
+        },
+        "name": "a",
+        "chapter": "a"
+    },
+    "chapter":{
+        "content": "#cont-text",
+        "filter": ["#cont-text > style@match->(?<=.).+(?=\\{)"],
+        "page": "a.abcdYe"
+    }
+}
